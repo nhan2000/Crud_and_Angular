@@ -1,0 +1,92 @@
+<br>
+<br>
+<br>
+<div class="container">
+    <div class="border">
+        <button class="nt btn-md" click="open(content)">New Student</button>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>FirstName</th>
+                <th>MiddleName</th>
+                <th>LastName</th>
+                <th>Address</th>
+                <th>BirthDate</th>
+                <th>Score</th>
+                <th>Dep_id</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let friends of friends">
+                <td><span>{{friends.Id}}</span></td>
+                <td><span>{{friends.f_name}}</span></td>
+                <td><span>{{friends.m_name}}</span></td>
+                <td><span>{{friends.l_name}}</span></td>
+                <td><span>{{friends.address}}</span></td>
+                <td><span>{{friends.birthDate}}</span></td>
+                <td><span>{{friends.score}}</span></td>
+                <td><span>{{friends.dep_id}}</span></td>
+                <td>
+                    <button class="btn btn-sm btn-info"> 
+                        <i id="ic1" class="fa fa-search"></i>Details
+                    </button>
+                    <button class="btn btn-sm btn-warning"> 
+                        <i id="ic2" class="fa fa-warning"></i>Edit
+                    </button>
+                    <button class="btn btn-sm btn-danger"> 
+                        <i id="ic3" class="fa fa-danger"></i>Delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">New Friend</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+
+    </div>
+    <div class="modal-boy">
+        <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+            <div class="form-group">
+                <label for="f_name">FirstName</label>
+                <div class="input-group">
+                    <input id="f_name" class="form-control" ([(ngModal)])="friends.f_name" name="f_name">
+                </div>
+                <label for="m_name">MiddleName</label>
+                <div class="input-group">
+                    <input id="m_name" class="form-control" ([(ngModal)])="friends.m_name" name="m_name">
+                </div>
+                <label for="l_name">LastName</label>
+                <div class="input-group">
+                    <input id="l_name" class="form-control" ([(ngModal)])="friends.l_name" name="l_name">
+                </div>
+                <label for="address">Address</label>
+                <div class="input-group">
+                    <input id="address" class="form-control" ([(ngModal)])="friends.address" name="address">
+                </div>
+                <label for="birthDate">BirthDate</label>
+                <div class="input-group">
+                    <input id="birthDate" class="form-control" ([(ngModal)])="friends.birthDate" name="birthDate">
+                </div>
+                <label for="score">Score</label>
+                <div class="input-group">
+                    <input id="score" class="form-control" ([(ngModal)])="friends.score" name="score">
+                </div>
+                <div class="border text-centerr">
+                    <button data-dismiss="modal" class="btn btn-info">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('save.click')">Save</button>
+    </div>
+</ng-template>
